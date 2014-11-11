@@ -15,7 +15,7 @@ sub suite {
     my $class = shift;
     my $suite = Test::Unit::TestSuite->empty_new("Framework Tests");
     $suite->add_test('MonServiceTest');
-		$suite->add_test('MonTest');
+    $suite->add_test('MonTest');
     #$suite->add_test('MonPluginTest');
     #$suite->add_test('MonNotifyTest');
     return $suite;

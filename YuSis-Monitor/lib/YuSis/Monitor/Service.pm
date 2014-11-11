@@ -8,81 +8,81 @@ use Carp qw/croak/;
 our $VERSION = sprintf("%d.%02d", q$Revision: 1.2 $ =~ /(\d+)\.(\d+)/);
 
 sub new {
-	my $class = shift;
-	my $self = {
-		name => undef,
-		description => undef,
-		id => undef, #required on init
-		monitor_type => undef, #monitor type (the tag service or product )
-		type => undef, #service type (value of the 'type' attribute)
-		details => undef #holds the contents of product (or service) tag
-	};
+  my $class = shift;
+  my $self = {
+    name => undef,
+    description => undef,
+    id => undef, #required on init
+    monitor_type => undef, #monitor type (the tag service or product )
+    type => undef, #service type (value of the 'type' attribute)
+    details => undef #holds the contents of product (or service) tag
+  };
 
-	if(@_){
-		my %extra = ref $_[0] eq "HASH" ? %{$_[0]} : @_;
-		@$self{keys %extra} = values %extra;
-	}
+  if(@_){
+    my %extra = ref $_[0] eq "HASH" ? %{$_[0]} : @_;
+    @$self{keys %extra} = values %extra;
+  }
 
-	my $ref = bless $self, $class;
-	$ref->init;
-	return $ref;
+  my $ref = bless $self, $class;
+  $ref->init;
+  return $ref;
 }
 
 sub init {
-	my $self = shift;
-	croak qq/Service must have an id/ unless(defined $self->{id});
+  my $self = shift;
+  croak qq/Service must have an id/ unless(defined $self->{id});
 }
 
 sub is_product {
-	my $self = shift;
-	my $mt = $self->{monitor_type};
-	return $mt && $mt eq 'product' ? 1 : 0;
+  my $self = shift;
+  my $mt = $self->{monitor_type};
+  return $mt && $mt eq 'product' ? 1 : 0;
 }
 
 
 #TODO: revise to make name more explict as to what it returns
 sub details {
-	my $self = shift;
-	my $o = $self->{details};
-	if(@_) { $self->{details} = shift; }
-	return $o;
+  my $self = shift;
+  my $o = $self->{details};
+  if(@_) { $self->{details} = shift; }
+  return $o;
 }
 
 sub monitor_type { #returns the value of (product|service)
-	my $self = shift;
-	my $o = $self->{monitor_type};
-	if(@_) { $self->{monitor_type} = shift; }
-	return $o;
+  my $self = shift;
+  my $o = $self->{monitor_type};
+  if(@_) { $self->{monitor_type} = shift; }
+  return $o;
 }
 
 sub name {
-	my $self = shift;
-	my $o = $self->{name};
-	if(@_) { $self->{name} = shift; }
-	return $o;
+  my $self = shift;
+  my $o = $self->{name};
+  if(@_) { $self->{name} = shift; }
+  return $o;
 }
 
 #the service type: operational, application, general, technical
 sub type {
-	my $self = shift;
-	my $o = $self->{type};
-	if(@_) { $self->{type} = shift; }
-	return $o;
+  my $self = shift;
+  my $o = $self->{type};
+  if(@_) { $self->{type} = shift; }
+  return $o;
 }
 
 
 sub id {
-	my $self = shift;
-	my $o = $self->{id};
-	if(@_) { $self->{id} = shift; }
-	return $o;
+  my $self = shift;
+  my $o = $self->{id};
+  if(@_) { $self->{id} = shift; }
+  return $o;
 }
 
 sub description {
-	my $self = shift;
-	my $o = $self->{description};
-	if(@_) { $self->{description} = shift; }
-	return $o;
+  my $self = shift;
+  my $o = $self->{description};
+  if(@_) { $self->{description} = shift; }
+  return $o;
 }
 
 
@@ -100,11 +100,11 @@ YuSis::Monitor::Service - Contains information about the product/service being m
   use YuSis::Monitor::Service;
 
   my $s = YuSis::Monitor::Service->new(
-	description => 'My service description',
-	type => 'operational',
-	monitor_type => 'product',
-	name => 'ADMW',
-	id => 'serv_01'
+  description => 'My service description',
+  type => 'operational',
+  monitor_type => 'product',
+  name => 'ADMW',
+  id => 'serv_01'
   );
 
   $s->type('technical');    # set type to 'technical'
@@ -112,8 +112,8 @@ YuSis::Monitor::Service - Contains information about the product/service being m
   $s->type;                 # returns 'technical'
 
   my $my_params = {
-  	parm1 => 'val1',
-  	parm2 => 'val2'
+    parm1 => 'val1',
+    parm2 => 'val2'
   };
   $d->details($my_params);  # set arbitrary params
 
