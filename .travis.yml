@@ -2,9 +2,13 @@ language: perl
 
 perl: "5.18"
 
+branches:
+  only:
+    - master
+
 before_install:
     - cpanm --force Test::Unit::Debug
-    - cpanm Parallel::ForkManager
-    - cpanm IO::CaptureOutput
-    - cpanm Time::HiRes
-    - cpanm Date::Calc
+    - cpanm --quiet Parallel::ForkManager
+    - cpanm --quiet IO::CaptureOutput
+    - cpanm --quiet Time::HiRes
+    - cpanm --quiet Date::Calc
