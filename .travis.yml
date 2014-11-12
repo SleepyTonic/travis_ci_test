@@ -3,4 +3,8 @@ language: perl
 perl: "5.18"
 
 before_install:
-    - cpanm --force Test::Unit::Debug # optional dependency
+    - cpanm --force Test::Unit::Debug
+    - cpanm Parallel::ForkManager
+    - cpanm IO::CaptureOutput
+    - cpanm Time::HiRes
+    - cpanm Date::Calc
