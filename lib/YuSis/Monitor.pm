@@ -11,6 +11,10 @@ use Time::HiRes qw/time/;
 use Date::Calc;
 use Data::Dumper;
 
+#TODO: remove later
+use Test::Unit::Debug;
+use Test::Unit::HarnessUnit;
+
 
 our $VERSION = '0.6';
 our $DEFAULT_PLUGIN_TIMEOUT = 120; # 120 seconds, 0 = disabled
